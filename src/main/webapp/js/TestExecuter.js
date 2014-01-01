@@ -447,15 +447,23 @@ function $setTextBox(textBox, value, defaultValue) {
 	textBox.value = value ? value : defaultValue;
 }
 
+function setFieldBox(fieldBox, newValue, defaultValue) {
+	var oldValue = fieldBox.value
+	fieldBox.value = newValue ? newValue : "";
+	if(fieldBox.value != oldValue && fieldBox.onkeyup) {
+		fieldBox.onkeyup();
+	}
+}
+
 function loadSettings(propertiesFileContent, fields) {
 	var properties = readPropertiesData(propertiesFileContent);
 	parseProperties(properties);
 	
-	fields.enableFieldTextBox.value = properties.enableField ? properties.enableField : "";
-	fields.groupByTextBox.value = properties.groupBy ? properties.groupBy : "";
-	fields.showFieldsTextBox.value = properties.showFields ? properties.showFields : "";
-	fields.multiplicityFieldTextBox.value = properties.multiplicityField ? properties.multiplicityField : "";
-	fields.fieldSeparatorTextBox.value = properties.fieldSeparator ? properties.fieldSeparator : "";
+	setFieldBox(fields.enableFieldTextBox, properties.enableField, "");
+	setFieldBox(fields.groupByTextBox, properties.groupBy, "");
+	setFieldBox(fields.showFieldsTextBox, properties.showFields, "");
+	setFieldBox(fields.multiplicityFieldTextBox, properties.multiplicityField, "");
+	setFieldBox(fields.fieldSeparatorTextBox, properties.fieldSeparator, "");
 }
 
 function getConfigFields(uuid) {
@@ -542,16 +550,32 @@ function setSelectionOptions(selectBox, availableFields, current) {
 	selectBox.innerHTML = "";
 	var selectIndex = 0;
 	
+	var firstOption = addOption(selectBox,"","--Selecte Field--", false);
+	
+	var hadSelected = false;
+	
 	for(var field in availableFields) {
-		var option = document.createElement('option');
-		option.value = field;
-		option.innerHTML = field;
-		if(field == current) {
-			option.selected = "selected";
-		}
-		
-		selectBox.appendChild(option);
+		var selected = field == current;
+		addOption(selectBox,field,field,selected);
+		hadSelected = hadSelected || selected;
 	}
+	
+	if(!hadSelected) {
+		firstOption.selected = "selected";
+	}
+}
+
+function addOption(container, value, title, isSelected) {
+	var option = document.createElement('option');
+	option.value = value;
+	option.innerHTML = title;
+	if(isSelected) {
+		option.selected = "selected";
+	}
+	
+	container.appendChild(option);
+	
+	return option;
 }
 
 function addToTextBoxList(fieldName, showFieldsTextBox) {
@@ -604,4 +628,9 @@ function createFieldToShow(fieldList, fields, fieldName, count, total) {
 	fieldItem.appendChild(counter);
 	
 	fieldList.appendChild(fieldItem);
+}
+
+function onPropertyChange(selectBoxName) {
+	var selectBox = $get(selectBoxName);
+	selectBox.selectedIndex = 0;
 }

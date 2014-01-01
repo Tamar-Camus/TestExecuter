@@ -37,6 +37,7 @@
 				<tr>
 					<td width="100%">
 						<f:textbox id="enableField_${instance.uuid}"
+							onkeyup="onPropertyChange('enableFieldSelect_${instance.uuid}')"
 							value='${instance.enableField != null ? instance.enableField.text : ""}'
 							placeholder="Field name of the field suggesting if the test is enabled or not" />
 					</td>
@@ -56,6 +57,7 @@
 				<tr>
 					<td width="100%">
 						<f:textbox id="groupBy_${instance.uuid}"
+							onkeyup="onPropertyChange('groupBySelect_${instance.uuid}')"
 							value='${instance.groupBy != null ? instance.groupBy.text : ""}'
 							placeholder="The field(s) that the tests will be grouped by"/>
 					</td>
@@ -93,6 +95,7 @@
 				<tr>
 					<td width="100%">
 						<f:textbox id="multiplicityField_${instance.uuid}"
+							onkeyup="onPropertyChange('multiplicityFieldSelect_${instance.uuid}')"
 							value='${instance.multiplicityField != null ? instance.multiplicityField.text : ""}'
 							placeholder="The field that will be set to the amount of time the test should run" />
 					</td>

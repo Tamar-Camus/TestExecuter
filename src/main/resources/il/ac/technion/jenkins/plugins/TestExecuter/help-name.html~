@@ -1,0 +1,3 @@
+<div dir=LTR>
+Enter the name of the <b>environment variable</b> in which you want your selected tests to be saved in (after build the selected tests will be in this environment variable as a JSON array).<br/>
+</div>

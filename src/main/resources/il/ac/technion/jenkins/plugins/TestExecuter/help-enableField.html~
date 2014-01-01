@@ -1,0 +1,6 @@
+<div dir=LTR>
+Setting <b>Enable Field</b> property.
+<br/>
+<b>Enable Field</b> - the name of the field that will imply if the test is enabled or not.
+If the value in the specified field, for some test(s), will be false then the test will not be shown at all.
+</div>

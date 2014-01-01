@@ -1,0 +1,68 @@
+.plusbutton-old {
+	padding: 0px;
+	background-color: transparent;
+	text-indent: 0;
+	border: 1px solid #333333;
+	display: inline-block;
+	color: black;
+	font-family: Arial;
+	font-size: 10px;
+	font-style: normal;
+	line-height: 8px;
+	width: 8px;
+	text-decoration: none;
+	text-align: center;
+	cursor: pointer;
+	vertical-align: middle;
+	margin: 0px auto;
+}
+
+.groupcheckbox {
+	display: inline-block;
+}
+
+.treeTitle {
+	font-weight: bold;
+	padding-left: 4px;
+	margin-bottom: 8px;
+}
+
+.tree {
+	padding-left: 4px;
+}
+
+.groupTitle {
+	padding-left: 5px;
+}
+
+.group {
+	padding-left: 31px;
+	margin-bottom: 10px;
+	display: none;
+}
+
+.tree-button {
+	padding: 0px;
+	display: inline-block;
+	cursor: pointer;
+	padding: 0;
+	margin: 0;
+	width: 12px;
+	height: 12px;
+	vertical-align: baseline;
+}
+
+.tree-button:active {
+	position: relative;
+	top: 1px;
+}
+
+.button-collapse {
+	background-image:
+		url('../images/button-collapse.gif');
+}
+
+.button-expand {
+	background-image:
+		url('../images/button-expand.gif');
+}

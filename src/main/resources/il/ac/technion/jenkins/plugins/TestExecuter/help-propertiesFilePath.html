@@ -1,0 +1,74 @@
+<div dir=LTR>
+
+<div style='text-align:left;direction:ltr;unicode-bidi:embed'>
+The properties file you enter <b>must</b> have a property called <b>tests</b>.</div>
+
+<div style='text-align:left;direction:ltr;unicode-bidi:embed'>
+The <b>tests</b> property value is a JSON array that contains a JSON
+object for each test. 
+<br/>
+In each test object you need to specify it's attributes,
+by a key/value pairs.</div>
+
+<br/>
+<div style='text-align:left;direction:ltr;unicode-bidi:embed'>
+The following properties will allow you to select specific fields which have a special meaning:
+</div>
+
+<div style='margin-top:0cm;margin-right:
+0cm;margin-bottom:0.0pt;margin-left:30pt;text-align:left;text-indent:-18.0pt;
+direction:ltr;unicode-bidi:embed'>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;
+</span><b>enableField</b> - the name of the field that will imply if the test is enabled or not.
+<br/>
+if the value in the specified field, for some test(s), will be false then the test will not be shown at all.</div>
+
+<div style='margin-top:0cm;margin-right:
+0cm;margin-bottom:0.0pt;margin-left:30pt;text-align:left;text-indent:-18.0pt;
+direction:ltr;unicode-bidi:embed'>2.<span style='font:7.0pt "Times New Roman"'>&nbsp;
+</span><b>groupBy</b> - the field that the plugin will group the tests by. 
+<br/>
+if 2 tests have the same value in this field, they will be in the same group.</div>
+
+<div style='margin-top:0cm;margin-right:
+0cm;margin-bottom:0.0pt;margin-left:30pt;text-align:left;text-indent:-18.0pt;
+direction:ltr;unicode-bidi:embed'>3.<span>&nbsp;
+</span><b>showFields - </b>the field(s) that will be shown in the tests tree.</div>
+
+<div style='margin-top:0cm;margin-right:
+0cm;margin-bottom:0.0pt;margin-left:30pt;text-align:left;text-indent:-18.0pt;
+direction:ltr;unicode-bidi:embed'>4.<span>&nbsp;
+</span><b>multiplicityField - </b>the field that will be set to the amount of times the test should run.</div>
+
+<div style='margin-top:0cm;margin-right:
+0cm;margin-bottom:0.0pt;margin-left:30pt;text-align:left;text-indent:-18.0pt;
+direction:ltr;unicode-bidi:embed'>5.<span>&nbsp;
+</span><b>fieldSeparator - </b>the character that will separate between the fields in the tests tree.</div>
+
+<div style='text-align:left;direction:ltr;unicode-bidi:embed'>
+<b>Each propety must</b> be defined either in the properties file or in the override section bellow.
+<br/>
+If you want to chang the properties you defined In the file, you can override them in the section bellow. 
+</div>
+
+<br/>
+<div style='text-align:left;direction:ltr;unicode-bidi:
+embed;margin-top:5px;'> <u>This is an <b>example</b> for a properties file which contains all above properties: </u>
+</div>
+
+<div style='margin-bottom:0cm;margin-bottom:.0001pt;
+text-align:left;line-height:normal;direction:ltr;unicode-bidi:embed'>tests=[{&quot;enabled&quot;:true,&quot;owner&quot;:&quot;shushu&quot;,&quot;testgroup&quot;:&quot;A&quot;,&quot;testcase&quot;:&quot;single&quot;},{&quot;enabled&quot;:false,&quot;owner&quot;:&quot;shushu&quot;,&quot;testgroup&quot;:&quot;B&quot;,&quot;setuptype&quot;:&quot;basic&quot;,&quot;testcase&quot;:&quot;triple&quot;}]</div>
+
+<div style='margin-bottom:0cm;margin-bottom:.0001pt;
+text-align:left;line-height:normal;direction:ltr;unicode-bidi:embed'>enableField=enabled</div>
+
+<div style='margin-bottom:0cm;margin-bottom:.0001pt;
+text-align:left;line-height:normal;direction:ltr;unicode-bidi:embed'>groupBy=testgroup</div>
+
+<div style='margin-bottom:0cm;margin-bottom:.0001pt;
+text-align:left;line-height:normal;direction:ltr;unicode-bidi:embed'>fieldSeparator=.</div>
+
+<div style='margin-bottom:0cm;margin-bottom:.0001pt;
+text-align:left;line-height:normal;direction:ltr;unicode-bidi:embed'>showFields=testsuite,testcase</div>
+
+</div>
+

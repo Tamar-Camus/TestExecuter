@@ -71,6 +71,10 @@ function loadTreeFromProperties(propertiesFileContent, fields) {
 }
 
 function commaSeperatedToArray(str) {
+	if(!str) {
+		return [];
+	}
+	
 	var result = str.split(",");
 	for(var i=0; i < result.length; ++i) {
 		result[i] = result[i].trim();
@@ -83,11 +87,36 @@ function readPropertiesData(propertiesData) {
 }
 
 function parseProperties(properties) {
-	properties.tests = JSON.parse(properties.tests);
+	if(!properties.tests || properties.tests.length == 0) {
+		properties.tests = [];
+	} else {
+		properties.tests = JSON.parse(properties.tests);
+	}
 	properties.showFields = commaSeperatedToArray(properties.showFields);
-	properties.enableField = properties.enableField.trim();
-	properties.groupBy = properties.groupBy.trim();
-	properties.fieldSeparator = properties.fieldSeparator.trim();
+	
+	if(!properties.enableField) {
+		properties.enableField = "";
+	} else {
+		properties.enableField = properties.enableField.trim();
+	}
+	
+	if(!properties.groupBy) {
+		properties.groupBy = "";
+	} else {
+		properties.groupBy = properties.groupBy.trim();
+	}
+	
+	if(!properties.fieldSeparator) {
+		properties.fieldSeparator = "";
+	} else {
+		properties.fieldSeparator = properties.fieldSeparator.trim();
+	}
+	
+	if(!properties.multiplicityField) {
+		properties.multiplicityField = "";
+	} else {
+		properties.multiplicityField = properties.multiplicityField.trim();
+	}
 	
 	properties.tests = properties.tests.sort(getTestComperator(properties.showFields));
 	properties.groupsMap = getGroups(properties);
@@ -550,7 +579,7 @@ function setSelectionOptions(selectBox, availableFields, current) {
 	selectBox.innerHTML = "";
 	var selectIndex = 0;
 	
-	var firstOption = addOption(selectBox,"","--Selecte Field--", false);
+	var firstOption = addOption(selectBox,"","--Select Field--", false);
 	
 	var hadSelected = false;
 	

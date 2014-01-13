@@ -7,10 +7,24 @@
 		<version>1.509.4</version>
 	</parent>
 
+	<groupId>org.jenkins-ci.plugins</groupId>
 	<artifactId>TestExecuter</artifactId>
 	<version>1.0</version>
 	<packaging>hpi</packaging>
 
+	<repositories>
+		<repository>
+			<id>repo.jenkins-ci.org</id>
+			<url>http://repo.jenkins-ci.org/public/</url>
+		</repository>
+	</repositories>
+	
+	<pluginRepositories>
+		<pluginRepository>
+			<id>repo.jenkins-ci.org</id>
+			<url>http://repo.jenkins-ci.org/public/</url>
+		</pluginRepository>
+	</pluginRepositories>
 
 	<licenses>
 		<license>
@@ -30,9 +44,9 @@
 	</developers>
 
 	<scm>
-		<connection>scm:git:ssh://github.com/jenkinsci/TestExecuter.git</connection>
-		<developerConnection>scm:git:ssh://git@github.com/jenkinsci/TestExecuter.git</developerConnection>
-		<url>https://github.com/jenkinsci/TestExecuter</url>
+		<connection>scm:git:ssh://github.com/jenkinsci/selected-tests-executer-plugin.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com/jenkinsci/selected-tests-executer-plugin.git</developerConnection>
+		<url>https://github.com/jenkinsci/selected-tests-executer-plugin</url>
 	</scm>
 
 	<distributionManagement>

@@ -7,7 +7,7 @@
 		<version>1.509.4</version>
 	</parent>
 	
-	<url>http://wiki.jenkins-ci.org/display/JENKINS/selected-tests-executer-plugin</url>
+	<url>http://wiki.jenkins-ci.org/display/JENKINS/selected+tests+executor+plugin</url>
 
 <!-- 	<groupId>org.jenkins-ci.plugins</groupId> -->
 	<artifactId>TestExecuter</artifactId>
@@ -46,9 +46,9 @@
 	</developers>
 
 	<scm>
-		<connection>scm:git:ssh://github.com/jenkinsci/selected-tests-executer-plugin.git</connection>
-		<developerConnection>scm:git:ssh://git@github.com/jenkinsci/selected-tests-executer-plugin.git</developerConnection>
-		<url>https://github.com/jenkinsci/selected-tests-executer-plugin</url>
+		<connection>scm:git:ssh://github.com/jenkinsci/selected-tests-executor-plugin.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com/jenkinsci/selected-tests-executor-plugin.git</developerConnection>
+		<url>https://github.com/jenkinsci/selected-tests-executor-plugin</url>
 	</scm>
 
 	<distributionManagement>

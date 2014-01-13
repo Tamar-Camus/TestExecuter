@@ -1,7 +1,0 @@
-<div dir=LTR>
-Setting <b>Group By</b> property.
-<br/>
-<b>Group By</b> - the field that the plugin will group the tests by. 
-<br/>
-if 2 tests have the same value in this field, they will be in the same group.</div>
-</div>

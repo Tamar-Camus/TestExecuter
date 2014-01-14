@@ -6,7 +6,7 @@
 		<version>1.509.4</version>
 	</parent>
 	
-	<url>http://wiki.jenkins-ci.org/display/JENKINS/selected+tests+executor+plugin</url>
+	<url>http://wiki.jenkins-ci.org/display/JENKINS/Selected+Tests+Executor+Plugin</url>
 
 <!-- 	<groupId>org.jenkins-ci.plugins</groupId> -->
 	<artifactId>TestExecuter</artifactId>

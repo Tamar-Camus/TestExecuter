@@ -9,7 +9,7 @@
 	<url>http://wiki.jenkins-ci.org/display/JENKINS/Tests+Selector+Plugin</url>
 
 	<artifactId>selected-tests-executor</artifactId>
-	<version>1.2-SNAPSHOT</version>
+	<version>1.2</version>
 	<packaging>hpi</packaging>
 	<name>Tests Selector</name>
 	<description>This plugin allows you to choose specific tests you want to run.</description>

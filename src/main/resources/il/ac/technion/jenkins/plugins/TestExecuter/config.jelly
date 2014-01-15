@@ -1,6 +1,6 @@
 <j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define"
 	xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
-	<script type="text/javascript" src="${rootURL}/plugin/TestExecuter/js/TestExecuter.js"></script>
+	<script type="text/javascript" src="${rootURL}/plugin/selected-tests-executor/js/TestExecuter.js"></script>
 	<script type="text/javascript">
 		var TestExecuterRPC = <st:bind value="${descriptor}" />;
 	</script>
@@ -21,7 +21,7 @@
 
 <f:section title="Override Properties File Settings" />
 
-	<f:entry title="Load Information" help="/plugin/TestExecuter/help-overridePropertiesFileSettings.html">
+	<f:entry title="Load Information" help="/plugin/selected-tests-executor/help-overridePropertiesFileSettings.html">
 		<div>
 		<input type="button" value="Load Properties From File"
 			onclick="loadSettingsFromPropertiesFile('propertiesFilePath_${instance.uuid}', 'enableField_${instance.uuid}', 'groupBy_${instance.uuid}', 'showFields_${instance.uuid}', 'multiplicityField_${instance.uuid}', 'fieldSeparator_${instance.uuid}')" />

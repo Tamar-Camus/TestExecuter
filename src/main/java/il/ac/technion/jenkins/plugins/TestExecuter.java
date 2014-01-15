@@ -99,7 +99,6 @@ public class TestExecuter extends SimpleParameterDefinition {
 	// Overridden for better type safety.
 	@Override
 	public DescriptorImpl getDescriptor() {
-		//return (DescriptorImpl) super.getDescriptor();
 		return (DescriptorImpl) Hudson.getInstance().getDescriptor(getClass());
 	}
 	
@@ -142,7 +141,6 @@ public class TestExecuter extends SimpleParameterDefinition {
 	@Override
 	public ParameterValue createValue(StaplerRequest req,
 			JSONObject jo) {
-		//String result = getSelectedTestAsString(jo.getString("selectedTests"));
 		return createValue(jo.getString("selectedTests"));
 	}
 	

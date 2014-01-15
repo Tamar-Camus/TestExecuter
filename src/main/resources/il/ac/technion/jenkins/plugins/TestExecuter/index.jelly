@@ -68,16 +68,6 @@
 		</span>
 	</f:block>
 	
-<!-- 	"${it.groupBy}", -->
-<!-- 				"${it.showFields}", -->
-<!-- 				"${it.multiplicityField}", -->
-<!-- 				"${it.fieldSeparator != null ? }", -->
-<!-- 				"${it.overrideEnableField}", -->
-<!-- 				"${it.overrideGroupBy}", -->
-<!-- 				"${it.overrideShowFields}", -->
-<!-- 				"${it.overrideMultiplicityField}", -->
-<!-- 				"${it.overrideFieldSeparator}"); -->
-	
 	<script type="text/javascript" src="${rootURL}/plugin/selected-tests-executor/js/TestExecuter.js"></script>
 	<script type="text/javascript">
 		var TestExecuterRPC = <st:bind value="${it}"/>;

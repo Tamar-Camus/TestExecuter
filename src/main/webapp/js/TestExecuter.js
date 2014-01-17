@@ -489,7 +489,7 @@ function loadSettingsFromPropertiesFile(propertiesFilePathTextBoxName,
 	
 	fields.filePath = fields.propertiesFilePathTextBox.value;
 	
-	var CONFIRM_MESSAGE = "This action will override all the properties you defined bellow.\nAre you sure you want to do this?";
+	var CONFIRM_MESSAGE = "This action will override some (or all) of the properties you defined bellow.\nAre you sure you want to do this?";
 	
 	if(allEmpty || window.confirm(CONFIRM_MESSAGE)) {
 		TestExecuterRPC.loadPropertiesFile(fields.filePath, function(t) {

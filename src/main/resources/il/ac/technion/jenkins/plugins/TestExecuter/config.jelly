@@ -24,7 +24,7 @@
 
 	<f:entry title="Load Information" help="/plugin/selected-tests-executor/help-overridePropertiesFileSettings.html">
 		<div>
-		<input type="button" value="Load Properties From File"
+		<input type="button" value="Fetch Properties From File"
 			onclick="loadSettingsFromPropertiesFile('propertiesFilePath_${instance.uuid}', 'enableField_${instance.uuid}', 'groupBy_${instance.uuid}', 'showFields_${instance.uuid}', 'multiplicityField_${instance.uuid}', 'fieldSeparator_${instance.uuid}')" />
 
 		<input type="button" value="Show Available Fields"

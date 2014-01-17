@@ -443,6 +443,14 @@ function getAllTestsFields(properties) {
 function $get(name) {
 	return document.getElementById(name);
 }
+function isAllFieldsEmpty(fields) {
+	for(var f in fields) {
+		if (fields[f].value.length != 0) {
+			return false;
+		}
+	}
+	return true;
+}
 
 function loadSettingsFromPropertiesFile(propertiesFilePathTextBoxName, 
 		enableFieldTextBoxName,
@@ -458,6 +466,7 @@ function loadSettingsFromPropertiesFile(propertiesFilePathTextBoxName,
 			multiplicityFieldTextBox: $get(multiplicityFieldTextBoxName),
 			fieldSeparatorTextBox: $get(fieldSeparatorTextBoxName)
 		};
+	var allEmpty=isAllFieldsEmpty(fields);
 	
 	fields.propertiesFilePathTextBox =  $get(propertiesFilePathTextBoxName);
 	
@@ -465,20 +474,16 @@ function loadSettingsFromPropertiesFile(propertiesFilePathTextBoxName,
 	
 	var CONFIRM_MESSAGE = "This action will override all the properties you defined bellow.\nAre you sure you want to do this?";
 	
-	if(window.confirm(CONFIRM_MESSAGE)) {
+	if(allEmpty || window.confirm(CONFIRM_MESSAGE)) {
 		TestExecuterRPC.loadPropertiesFile(fields.filePath, function(t) {
 			loadSettings(t.responseObject(), fields);
 		});
 	}
 }
 
-function $setTextBox(textBox, value, defaultValue) {
-	textBox.value = value ? value : defaultValue;
-}
-
-function setFieldBox(fieldBox, newValue, defaultValue) {
-	var oldValue = fieldBox.value
-	fieldBox.value = newValue ? newValue : "";
+function setFieldBox(fieldBox, newValue) {
+	var oldValue = fieldBox.value;
+	fieldBox.value = (newValue && newValue.length > 0) ? newValue : oldValue;
 	if(fieldBox.value != oldValue && fieldBox.onkeyup) {
 		fieldBox.onkeyup();
 	}
@@ -488,11 +493,11 @@ function loadSettings(propertiesFileContent, fields) {
 	var properties = readPropertiesData(propertiesFileContent);
 	parseProperties(properties);
 	
-	setFieldBox(fields.enableFieldTextBox, properties.enableField, "");
-	setFieldBox(fields.groupByTextBox, properties.groupBy, "");
-	setFieldBox(fields.showFieldsTextBox, properties.showFields, "");
-	setFieldBox(fields.multiplicityFieldTextBox, properties.multiplicityField, "");
-	setFieldBox(fields.fieldSeparatorTextBox, properties.fieldSeparator, "");
+	setFieldBox(fields.enableFieldTextBox, properties.enableField);
+	setFieldBox(fields.groupByTextBox, properties.groupBy);
+	setFieldBox(fields.showFieldsTextBox, properties.showFields);
+	setFieldBox(fields.multiplicityFieldTextBox, properties.multiplicityField);
+	setFieldBox(fields.fieldSeparatorTextBox, properties.fieldSeparator);
 }
 
 function getConfigFields(uuid) {

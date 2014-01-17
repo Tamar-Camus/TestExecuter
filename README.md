@@ -1,4 +1,4 @@
-TestExecuter
+Tests Selector Plugin
 ============
 
 This plugin allows you to choose specific tests you want to run.

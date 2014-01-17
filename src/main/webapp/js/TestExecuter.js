@@ -245,6 +245,15 @@ function createGroup(groupName, groupTests, properties) {
 	properties.testsTreeContainer.appendChild(groupDiv);
 }
 
+function getMultiplicityAsInt(value) {
+	var asNumber = Number(value);
+	if(isNaN(asNumber) || asNumber < 1) {
+		return 0;
+	}
+	
+	return parseInt(asNumber);
+}
+
 function createTest(groupContainer, test, testIndex, groupState, properties) {
 	var testCheck = document.createElement('input');
 	testCheck.type = "checkbox";
@@ -269,21 +278,29 @@ function createTest(groupContainer, test, testIndex, groupState, properties) {
 		selectTest(testIndex, true, testCheck.checked, properties);
 	}
 	
-	var currentMulti = Number(test[properties.multiplicityField]);
+	var currentMulti = getMultiplicityAsInt(test[properties.multiplicityField]);
 	
-	if(isNaN(currentMulti) || currentMulti < 1) {
+	if(currentMulti < 1) {
 		test[properties.multiplicityField] = 1;
 	}
 	
 	var multi = document.createElement('input');
 	multi.value = test[properties.multiplicityField];
-	multi.type = "number";
-	multi.min = 1;
-	multi.max = 1000;
-	multi.style.width = "20px";
-	multi.style.height = "8px";
+	multi.type = "text";
+	multi.className = "multiplicityInput";
+	multi.style.backgroundColor = "#FFF";
+	
 	multi.onchange = function() {
-		test[properties.multiplicityField] = Number(multi.value);
+		var input = getMultiplicityAsInt(multi.value);
+		
+		if(input < 1) {
+			multi.style.backgroundColor = "#F99";
+			input = 1;
+		} else {
+			multi.style.backgroundColor = "#FFF";
+		}
+		
+		test[properties.multiplicityField] = input;
 		properties.commitSelected();
 	}
 	

@@ -51,6 +51,11 @@
 			background-image:
 				url('${rootURL}/plugin/selected-tests-executor/images/button-expand.gif');
 		}
+		
+		.multiplicityInput {
+			width:20px;
+			height:10px;
+		}
 	</style>
 
 	<f:block>

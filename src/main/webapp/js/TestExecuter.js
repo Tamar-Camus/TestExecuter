@@ -106,7 +106,13 @@ function parseProperties(properties) {
 	if(!properties.tests || properties.tests.length == 0) {
 		properties.tests = [];
 	} else {
-		properties.tests = JSON.parse(properties.tests);
+		try {
+			properties.tests = JSON.parse(properties.tests);
+		} catch(error) {
+			properties.tests = [];
+			console.log(error);
+			alert('Invalid tests property: '+error.message);
+		}
 	}
 	properties.showFields = commaSeperatedToArray(properties.showFields);
 	

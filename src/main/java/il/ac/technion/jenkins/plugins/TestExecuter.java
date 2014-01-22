@@ -135,7 +135,7 @@ public class TestExecuter extends SimpleParameterDefinition {
 			File file = new File(filePath);
 			
 			if(!file.exists()) {
-				return new ReadFileResponse(false, "File doesn't exist", null);
+				return new ReadFileResponse(false, "File doesn't exist OR Jenkins doesn't have permission for this file", null);
 			}
 			
 			if(!file.isFile()) {

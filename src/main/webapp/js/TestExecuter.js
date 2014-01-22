@@ -1,3 +1,19 @@
+function loadFileFromServer(filePath,callback) {
+	TestExecuterRPC.loadPropertiesFile(filePath, function(t) {
+		var res = t.responseObject();
+		console.log(res);
+		if (!res) {
+			alert('Internal server error');
+			return;
+		}
+		if(!res.success) {
+			alert(res.errorMsg);
+			return;
+		}
+		callback(res.content);
+	});
+}
+
 function loadTreeFromFile(filePath, selectedTestsTextBoxName,
 		testsTreeContainerName, fields) {
 	if(filePath == null ) {
@@ -7,8 +23,8 @@ function loadTreeFromFile(filePath, selectedTestsTextBoxName,
 	fields.selectedTestsTextBox = $get(selectedTestsTextBoxName);
 	fields.testsTreeContainer = $get(testsTreeContainerName);
 	
-	TestExecuterRPC.loadPropertiesFile(filePath, function(t) {
-		 loadTreeFromProperties(t.responseObject(), fields);
+	loadFileFromServer(filePath, function(content) {
+		loadTreeFromProperties(content, fields);
 	});
 }
 
@@ -492,8 +508,8 @@ function loadSettingsFromPropertiesFile(propertiesFilePathTextBoxName,
 	var CONFIRM_MESSAGE = "This action will override some (or all) of the properties you defined bellow.\nAre you sure you want to do this?";
 	
 	if(allEmpty || window.confirm(CONFIRM_MESSAGE)) {
-		TestExecuterRPC.loadPropertiesFile(fields.filePath, function(t) {
-			loadSettings(t.responseObject(), fields);
+		loadFileFromServer(fields.filePath, function(content) {
+			loadSettings(content, fields);
 		});
 	}
 }
@@ -547,8 +563,8 @@ function showHideAvailableFields(button, uuid) {
 		button.value = "Hide Available Fields";
 		var filePath =  fields.propertiesFilePath.value;
 
-		TestExecuterRPC.loadPropertiesFile(filePath, function(t) {
-			setAvailableFields(t.responseObject(), fields);
+		loadFileFromServer(filePath, function(content) {
+			setAvailableFields(content, fields);
 		});
 	} else {
 		button.value = "Show Available Fields";

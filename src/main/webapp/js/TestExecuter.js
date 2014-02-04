@@ -29,15 +29,21 @@ function loadFileFromServer(filePath, callback) {
  * they will be written to selectedTestsTextBox. The parameters for building the
  * tree defined in the properties file and fields.
  * The tree UI consists of:
- * 	group checkbox - by clicking on this checkbox all the sub group will be selected/unselected and will be added to the selectedTests variable. 
+ * 	group checkbox - by clicking on this checkbox all the sub group will be
+ * 		selected/unselected and will be added to the selectedTests variable. 
  * 		
- * 	test checbox - by clicking on this checkbox, the test will be added to the selectedTests variable.
- * 		if by clicking on this checkbox all the group is marked, then the group checkbox will be marked as well.
- * 		if by clicking on this checkbox all the group is not marked, then the group checkbox will not be marked as well.
+ * 	test checbox - by clicking on this checkbox, the test will be added to
+ * 		the selectedTests variable.
+ * 		If by clicking on this checkbox all the group is marked, then the group
+ * 		checkbox will be marked as well.
+ * 		If by clicking on this checkbox all the group is not marked, then the
+ * 		group checkbox will not be marked as well.
  * 	
- * 	multiplicity textbox - by entering a number the number will be added to the appropriate test in the multiplicityField.
- *		if the value was not a number the textbox will be colored in red.
- *		if the value was 0 or not a number, then the number that will be saved will be 1.   
+ * 	multiplicity textbox - by entering a number the number will be added to
+ * 		the appropriate test in the multiplicityField.
+ *		If the value was not a number the textbox will be colored in red.
+ *		If the value was 0 or not a number, then the number that will be saved
+ *		will be 1.   
  * 
  * @param filePath
  *            The properties file path.

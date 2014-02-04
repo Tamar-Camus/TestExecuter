@@ -133,6 +133,7 @@ API functions:
 
 * loadSettingsFromPropertiesFile(propertiesFilePathTextBoxName, enableFieldTextBoxName, groupByTextBoxName, 
 		showFieldsTextBoxName, multiplicityFieldTextBoxName, fieldSeparatorTextBoxName)
+```
 	Sets all override fields with the fields from the properties file. 
 	Will show alert if at least one textbox isn't empty.               
 			                                                           
@@ -142,9 +143,10 @@ API functions:
 	@param showFieldsTextBoxName                                       
 	@param multiplicityFieldTextBoxName                                
 	@param fieldSeparatorTextBoxName                                   
-
+```
 
 * showHideAvailableFields(button, uuid)
+```
 	Toggle Show/Hide the available fields next to the relavent textboxes in the 
 	configuration UI. When showing the fields, it will load them from the       
 	properties file entered in the UI.                                          
@@ -153,18 +155,22 @@ API functions:
 			   The button DOM element.                                          
 	@param uuid                                                                 
 			   The TestExecuter UUID.
+```
 
 * selectGroupInDiv(divName, check)
+```
 	Select/Unselect all the tests in a group.        
 			                                         
 	@param divName                                  
 			   The div name containing the group.         
 	@param check                                     
 			   true for select. false for unselect.                                          
+```
 
 Helper functions:
 -
 * loadFileFromServer(filePath,callback)
+```
 	Load a file from file system using RPC. On error, an alert will be shown. On 
 	success, the callback function will be called.                               
 			                                                                     
@@ -172,8 +178,10 @@ Helper functions:
 			   The path of the file in the file system.                          
 	@param callback                                                              
 			   A function that will be called on load success.                   
+```
 
 * overrideSettings(properties, fields)
+```
 	For each field that exist in fields, it will override this field in
 	properties.                                                        
 			                                                           
@@ -181,8 +189,10 @@ Helper functions:
 			   JSON object containing properties.                      
 	@param fields                                                      
 			   JSON object containing fields.                          
+```
 
 * loadTreeFromProperties(propertiesFileContent, fields)
+```
 	Load all tests from file. Build the tests tree and groups the tests. The      
 	tests tree will be appended to testsTreeContainer. When tests are selected,   
 	they will be written to selectedTestsTextBox. The parameters for building the 
@@ -194,15 +204,19 @@ Helper functions:
 	@param fields                                                                 
 			   A JSON object containing the fields to override - enableField,     
 			   groupBy, fieldSeparator, showFields, multiplicityField.            
+```
 
 * commaSeperatedToArray(str)
+```
 	Convert a list of elements as string to an array.                   
                                                                 
 	@param str                                                          
 			   String where the elements in it are separated by comma.  
 	@returns {Array} Consists all the elements from the string.         
-	
+```
+
 * parseProperties(properties)
+```
 	Parse the tests (JSON string to JSON array).                         
 	Group the tests and add 2 fields:                                    
 	 - groups: All available group names in the tests (sorted by name).  
@@ -211,27 +225,35 @@ Helper functions:
 			                                                             
 	@param properties                                                    
 			   The properties.                                           
+```
 
 * getSortedGroups(groupsMap)
+```
 	@param groupsMap                            
 			   A map of groups (name as key).   
 	@returns {Array} Group names sorted by name.
-	
+```
+
 * getGroups(properties)
+```
 	Groups the tests.                                                                
 	@param properties                                                                
 			   The properties.                                                       
 	@returns {Object} Map group names to tests array (contains only tests with       
 			 enableField = true). If there is a tests that doesn't have the          
 			 property groupBy it will be in "UNGROUPED" group.                       
-		
+```
+
 * loadTree(properties)
+```
 	Renders the tree to treeContainer 
 			                          
 	@param properties                 
 			   The properties         
+```
 
 * createGroup(groupName, groupTests, properties)
+```
 	Create a group of tests for the tree and add it to the tree. 
 			                                                     
 	@param groupName                                             
@@ -240,16 +262,20 @@ Helper functions:
 			   The tests belong to this group (array)            
 	@param properties                                            
 			   The properties                                    
+```
 
 * getMultiplicityAsInt(value)
+```
 	Convert multiplicity value from string to integer.                     
                                                                    
 	@param value                                                           
 			   {String} Multiplicity value                                 
 	@returns {Integer} Multiplicity value. returns 0, if the value in not a
 			 number or smaller then 0.                                     
-		
+```
+
 * createTest(groupContainer, test, testIndex, groupState, properties)
+```
 	Create a test for a group in the tree and add it to the group in the tree.    
 	                                                                          
 	@param groupContainer                                                         
@@ -262,9 +288,10 @@ Helper functions:
 			   An object allowing changing the group state (selected/unselected). 
 	@param properties                                                             
 			   The properties.                                                    
- 
+ ```
 
 * selectTest(testIndex, dontCommit, select, properties)
+```
 	Add/Remove test from selected tests.             
                                              
 	@param testIndex                                 
@@ -275,79 +302,98 @@ Helper functions:
 			   If true then add. Otherwise, remove.  
 	@param properties                                
 			   The properties.                       
+```
 
 * getShowString(test, properties)
+```
 	@param test                                                          
        The current test object.                                  
 	@param properties                                                    
 			   The properties.                                           
 	@returns {String} Containing the fields the user wanted to see       
 			 separated by the separator he chose, for the current test.  
-                                                                 
+```                                                   
 	
 * getTestComperator(fieldsToShow)
+```
 	@param fieldsToShow The fields that will be shown in the tree.                 
 	@returns {Function} a compare function to use for the getSortedGroups function.
+```
 
 * readPropertiesData(propertiesData)
+```
 	Parse .properties files                           
 			                                          
 	@param data                                       
 			   The properties file content.           
 	@returns {Object} Key/Value map of the properties.
-	
+```
+
 * setGroup(groupDiv, checkElement)
+```
 	Set the state of a group (selected/unselected). 
                                             
 	@param groupDiv                                 
 			   The div containing the group.        
 	@param checkElement                             
 			   true for select. false for unselect. 
-
+```
 
 * selectGroup(groupDiv, check)
+```
 	Select/Unselect all the tests in a group.        
 			                                         
 	@param groupDiv                                  
 			   The div containing the group.         
 	@param check                                     
 			   true for select. false for unselect.  
+```
 
-* checkAll(checkboxes, check)  
+* checkAll(checkboxes, check)
+```
 	Check/Uncheck all checkboxes                  
 			                                      
 	@param checkboxes                             
 			   {Array} Checkboxes                 
 	@param check                                  
 			   true for check. false for uncheck. 
-	
-* showHideGroup(groupDiv, button) 
+```
+
+* showHideGroup(groupDiv, button)
+```
 	Switch the visibility of the tests of a group.      
                                                 
 	@param groupDiv                                     
 			   A div containing the group to show/hide. 
 	@param button                                       
 			   The +/- button for the group.            
-	
-* getAllTestsFields(properties) 
+```
+
+* getAllTestsFields(properties)
+```
 	@param properties                                                           
        The properties.                                                  
 	@returns {Object} Key/Value map of all fields exists in the tests property, 
 			 mapped to the amount of tests it appears in.                       
+```
 
-* $get(name) 
+* $get(name)
+```
 	@param name                         
        The name of the textbox. 
 	@returns The actual DOM element.    
-                                
+```                             
 	
 * isAllFieldsEmpty(fields)
+```
 	@param fields                                                           
 			   The fields that appears in the override section (from the    
 			   configuration UI).                                           
 	@returns {Boolean} true if all empty.                                                                 
+```
 
 * setFieldBox(fieldBox, newValue)
+```
 	Set a textbox with a new value if the new value isn't empty. If the value     
 	changes it will call onkeyup().                                               
 			                                                                      
@@ -355,31 +401,38 @@ Helper functions:
 			   The textbox DOM element.                                           
 	@param newValue                                                               
 			   {String} The new value.                                             
+```
 
 * loadSettings(propertiesFileContent, fields)
+```
 	Sets all override fields with the fields from the properties file.   
 			                                                             
 	@param propertiesFileContent                                         
 			   The properties file content.                              
 	@param fields                                                        
 			   All fields.                                                
+```
 
 * getConfigFields(uuid)
+```
 	Get all the fields of the configuration UI based on uuid.       
 			                                                        
 	@param uuid                                                     
 			   The TextExecuter UUID                                
 	@returns {Object} The configuratio fields as Key/Value map.                                                   
-                                                                           
+```                                                                       
 
 * arrayToCommaSeperated(array)
+```
 	Convert an array of strings to a comma separated list. 
 			                                               
 	@param array                                           
 			   Array of strings.                           
 	@returns {String} A comma separated list.               
+```
 
 * setAvailableFields(propertiesFileContent, fields)                                                                            
+```
 	Show the available fields next to the relavent textboxes in the configuration 
 	UI.                                                                           
 			                                                                      
@@ -387,8 +440,10 @@ Helper functions:
 			   The properties file content.                                       
 	@param fields                                                                 
 			   The fields.                                                          
+```
 
 * setSelectionOptions(selectBox, availableFields, current)
+```
 	Add selection options for a select field.                                     
 			                                                                      
 	@param selectBox                                                              
@@ -397,32 +452,40 @@ Helper functions:
 			   All the fields available.                                          
 	@param current                                                                
 			   The current text entered in the textbox relavet to this select box.  
+```
 
 * addOption(container, value, title, isSelected)
+```
 	Add an option to a select box.                        
 	@param container The select box DOM element.          
 	@param value The value of the option to add.          
 	@param title The title of the option to add.          
 	@param isSelected Is this option should be selected.  
 	@returns {DOM element} The DOM element of the option.   
+```
 
 * addToTextBoxList(fieldName, showFieldsTextBox)
+```
 	Add item to a comma separeted list in a textbox.
 			                                        
 	@param fieldName                                
 			   The field to add to the list.        
 	@param showFieldsTextBox                        
 			   The textbox containing the list.      
+```
 
 * removeFromTextBoxList(fieldName, showFieldsTextBox)
+```
 	Remove item from a comma separeted list in a textbox. 
 			                                              
 	@param fieldName                                      
 			   The field to remove from the list.         
 	@param showFieldsTextBox                              
 			   The textbox containing the list.             
+```
 
-* createFieldToShow(fieldList, fields, fieldName, count, total) 
+* createFieldToShow(fieldList, fields, fieldName, count, total)
+```
 	Create a list item for the available fields to show. Next to each field will  
 	appear the amount of tests it appears in and an option to add/remove it from  
 	the list.                                                                     
@@ -437,11 +500,13 @@ Helper functions:
 			   The amount of times this field appear in the tests.                
 	@param total                                                                  
 			   The total amount of tests available.                               
+```
 
 * onPropertyChange(selectBoxName)
+```
 	On textbox edit, we need to update the relavent select box to show the
 	default option.                                                       
 			                                                              
 	@param selectBoxName                                                  
 			   The select box name.                                        
- 
+```

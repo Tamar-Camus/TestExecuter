@@ -14,6 +14,7 @@ TestExecuter.java
 Since our plugin is a build parameter our TestExecuter class extends "SimpleParameterDefinition" class.
 
 Members:
+-
 * uuid - A random number which helps to give a unique id's to the objects used in the jelly files.
 	We need it since we want to be able to add the plugin to the job as many times as we want.
 	That way our objects are unique in each addition and we can defer them from one another.
@@ -22,6 +23,7 @@ Members:
 * propertiesFilePath - In this parameter we will save the properties file path the user entered.
 
 The following parameters will indicate the fields which have a special meaning:
+-
 * enableField - Name of the field that will imply if the test is enabled or not. 
 * groupBy - Name of the field in which the plugin will group the tests by. 
 * showFields - Name of the field(s) that will be shown in the tests tree. 
@@ -29,67 +31,70 @@ The following parameters will indicate the fields which have a special meaning:
 * fieldSeparator - The character that will separate between the fields in the tests tree. 
 
 Significant functions:
-	* getAsJson() - Returns a json object which consists of (field/content) pairs.
-		Only for the following fields: enableField, groupBy, fieldSeparator, showFields, multiplicityField.
-	* loadPropertiesFile(String) - Calls similar function in the DescriptorImpl class.
-		Will be explained later.
+-
+* getAsJson() - Returns a json object which consists of (field/content) pairs.
+	Only for the following fields: enableField, groupBy, fieldSeparator, showFields, multiplicityField.
+* loadPropertiesFile(String) - Calls similar function in the DescriptorImpl class.
+	Will be explained later.
 
 Nested classes:
-	* ReadFileResponse: This class is the return value of loadPropertiesFile().
-			It consists of the members: success, errorMsg, content.
-			It help us manage the success/failure of the properties file opening.
-	* DescriptorImpl: This class is used to describe the TestExecuter class.
-			loadPropertiesFile(String) - This function gets the file path and tries to open it.
-				If it succeeds then it returns the content of the file.
-				If it fails then it returns appropriate message with the reason of the failure and a null for the content.
-				This function can be called by javascript code.
+-
+* ReadFileResponse: This class is the return value of loadPropertiesFile().
+	It consists of the members: success, errorMsg, content.
+	It help us manage the success/failure of the properties file opening.
+* DescriptorImpl: This class is used to describe the TestExecuter class.
+	- loadPropertiesFile(String) - This function gets the file path and tries to open it.
+			If it succeeds then it returns the content of the file.
+			If it fails then it returns appropriate message with the reason of the failure and a null for the content.
+			This function can be called by javascript code.
 
 config.jelly
 ==================================================================
 This file creates the plugin UI that appears in the job configuration.
 
 It contains a:
-	- Javascript object named "TestExecuterRPC" that will contain an object that will allow us to call RPC method
-		in the TestExecurer/DescriptorImpl class. Namely, loadPropertiesFile() RPC function.
-	- Textbox for the environment variable in which the selected tests will be saved in.
-	- Textbox for the properties file path.
-	- Textbox for the description (the user can enter a description if he wants).
+-
+- Javascript object named "TestExecuterRPC" that will contain an object that will allow us to call RPC method
+	in the TestExecurer/DescriptorImpl class. Namely, loadPropertiesFile() RPC function.
+- Textbox for the environment variable in which the selected tests will be saved in.
+- Textbox for the properties file path.
+- Textbox for the description (the user can enter a description if he wants).
 
-	- Override section:
-		In this section the user can override the properties he defined in the properties file or define them for the first time.
-		This section contains of the following:
-			* "Fetch properties From File" button - Call loadSettingsFromPropertiesFile function (javascript).
-				This function retrieves all the properties that exist in the properties file and fill the appropriate fields with them.
-			* "Show/Hide Available Fields" button - Call showHideAvailableFields function (javascript).
-				This function will show/hide all the fields used in the tests the user defined in the properties file.
-			* There are five optional blocks, one for each property.
-				By clicking on each checkbox a textbox will appear. In this textbox the property content will be entered.
-				To override a property the checkbox must be checked.
+- Override section:
+	In this section the user can override the properties he defined in the properties file or define them for the first time.
+	This section contains of the following:
+	* "Fetch properties From File" button - Call loadSettingsFromPropertiesFile function (javascript).
+		This function retrieves all the properties that exist in the properties file and fill the appropriate fields with them.
+	* "Show/Hide Available Fields" button - Call showHideAvailableFields function (javascript).
+		This function will show/hide all the fields used in the tests the user defined in the properties file.
+	* There are five optional blocks, one for each property.
+		By clicking on each checkbox a textbox will appear. In this textbox the property content will be entered.
+		To override a property the checkbox must be checked.
 
 index.jelly
 ==================================================================
 This file creates the plugin UI that appears after clicking on "build".
 
 It contains a:
-	- CSS section: Defines how the tree of tests will look.
-	- "Select All" button - Call selectGroupInDiv function (javascript).
-		We call this function with a "true" value since we want all the tests to be selected.
-		This function marks all nodes in the tree, and adds all of them to the selectedTests variable.
-	- "Unselect All" button - Call selectGroupInDiv function (javascript).
-		We call this function with a "false" value since we want all the tests to not be selected.
-		This function unmarks all nodes in the tree, and delete all of them from the selectedTests variable.
-	- TestTreeContainer - This div is initialized empty and will be filled by "loadTreeFromFile" function (javascript).
+-
+- CSS section: Defines how the tree of tests will look.
+- "Select All" button - Call selectGroupInDiv function (javascript).
+	We call this function with a "true" value since we want all the tests to be selected.
+	This function marks all nodes in the tree, and adds all of them to the selectedTests variable.
+- "Unselect All" button - Call selectGroupInDiv function (javascript).
+	We call this function with a "false" value since we want all the tests to not be selected.
+	This function unmarks all nodes in the tree, and delete all of them from the selectedTests variable.
+- TestTreeContainer - This div is initialized empty and will be filled by "loadTreeFromFile" function (javascript).
 	
-	To pass the selected tests to our TestExecuter class, we need to define a container named "parameters"
-	with a input field named "name" containing the name of the parameter.
-	For this we defined the following hidden input fields nested under a span name parameters:
-		* name - The name of the environment variable.
-		* selectedTests - A JSON array (as string) of the selected tests.
+- Javascript object named "TestExecuterRPC" that will contain an object that will allow us to call RPC method
+	in the TestExecurer class. Namely, loadPropertiesFile() RPC function.
+- Call to the "loadTreeFromFile" function (javascript), which opens the file containing the tests and builds the tree.
 
-	- Javascript object named "TestExecuterRPC" that will contain an object that will allow us to call RPC method
-		in the TestExecurer class. Namely, loadPropertiesFile() RPC function.
-	- Call to the "loadTreeFromFile" function (javascript), which opens the file containing the tests and builds the tree.
-
+To pass the selected tests to our TestExecuter class, we need to define a container named "parameters"
+with a input field named "name" containing the name of the parameter.
+For this we defined the following hidden input fields nested under a span name parameters:
+- name - The name of the environment variable.
+- selectedTests - A JSON array (as string) of the selected tests.
 
 TestExecuter.js
 ==================================================================

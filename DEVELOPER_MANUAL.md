@@ -74,14 +74,14 @@ This file creates the plugin UI that appears after clicking on "build".
 
 It contains:
 -
-- CSS section: Defines how the tree of tests will look.
-- "Select All" button - Call selectGroupInDiv function (javascript).
+- **CSS section** - Defines how the tree of tests will look.
+- **"Select All" button** - Call selectGroupInDiv function (javascript).
 	We call this function with a "true" value since we want all the tests to be selected.
 	This function marks all nodes in the tree, and adds all of them to the selectedTests variable.
-- "Unselect All" button - Call selectGroupInDiv function (javascript).
+- **"Unselect All" button** - Call selectGroupInDiv function (javascript).
 	We call this function with a "false" value since we want all the tests to not be selected.
 	This function unmarks all nodes in the tree, and delete all of them from the selectedTests variable.
-- TestTreeContainer - This div is initialized empty and will be filled by "loadTreeFromFile" function (javascript).
+- **TestTreeContainer** - This div is initialized empty and will be filled by "loadTreeFromFile" function (javascript).
 	
 - Javascript object named "TestExecuterRPC" that will contain an object that will allow us to call RPC method
 	in the TestExecurer class. Namely, loadPropertiesFile() RPC function.
@@ -90,8 +90,8 @@ It contains:
 To pass the selected tests to our TestExecuter class, we need to define a container named "parameters"
 with a input field named "name" containing the name of the parameter.
 For this we defined the following hidden input fields nested under a span name parameters:
-- name - The name of the environment variable.
-- selectedTests - A JSON array (as string) of the selected tests.
+- **name** - The name of the environment variable.
+- **selectedTests** - A JSON array (as string) of the selected tests.
 
 TestExecuter.js
 ==================================================================
@@ -106,14 +106,19 @@ API functions:
 	they will be written to selectedTestsTextBox. The parameters for building the     
 	tree defined in the properties file and fields.
 	The tree UI consists of:		
-	- group checkbox - by clicking on this checkbox all the sub group will be selected/unselected 
-		and will be added to the selectedTests variable. 
-	- test checbox - by clicking on this checkbox, the test will be added to the selectedTests variable.
-		if by clicking on this checkbox all the group is marked, then the group checkbox will be marked as well.
-		if by clicking on this checkbox all the group is not marked, then the group checkbox will not be marked as well.
-	- multiplicity textbox - by entering a number the number will be added to the appropriate test in the multiplicityField.
-		if the value was not a number the textbox will be colored in red.
-		if the value was 0 or not a number, then the number that will be saved will be 1.                                  
+	- group checkbox - by clicking on this checkbox all the sub group will be
+		selected/unselected and will be added to the selectedTests variable. 
+	- test checbox - by clicking on this checkbox, the test will be added to the
+		selectedTests variable.
+		If by clicking on this checkbox all the group is marked, then the group
+		checkbox will be marked as well.
+		If by clicking on this checkbox all the group is not marked, then the group
+		checkbox will not be marked as well.
+	- multiplicity textbox - by entering a number the number will be added to the
+		appropriate test in the multiplicityField.
+		If the value was not a number the textbox will be colored in red.
+		If the value was 0 or not a number, then the number that will be saved will
+		be 1.                                  
 			                                                                          
 	@param filePath                                                                   
 			   The properties file path.                                              

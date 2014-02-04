@@ -36,10 +36,10 @@ Significant functions:
 
 Nested classes:
 -
-* ReadFileResponse: This class is the return value of loadPropertiesFile().
+* **ReadFileResponse:** This class is the return value of loadPropertiesFile().
 	It consists of the members: success, errorMsg, content.
 	It help us manage the success/failure of the properties file opening.
-* DescriptorImpl: This class is used to describe the TestExecuter class.
+* **DescriptorImpl:** This class is used to describe the TestExecuter class.
 	- loadPropertiesFile(String) - This function gets the file path and tries to open it.
 			If it succeeds then it returns the content of the file.
 			If it fails then it returns appropriate message with the reason of the failure and a null for the content.
@@ -51,18 +51,18 @@ This file creates the plugin UI that appears in the job configuration.
 
 It contains:
 -
-- Javascript object named "TestExecuterRPC" that will contain an object that will allow us to call RPC method
+- Javascript object named **TestExecuterRPC** that will contain an object that will allow us to call RPC method
 	in the TestExecurer/DescriptorImpl class. Namely, loadPropertiesFile() RPC function.
 - Textbox for the **environment variable** in which the selected tests will be saved in.
 - Textbox for the **properties file path**.
 - Textbox for the **description** (the user can enter a description if he wants).
 
-- Override section:
+- **Override section:**
 	In this section the user can override the properties he defined in the properties file or define them for the first time.   
 	This section contains of the following:
-	* "Fetch properties From File" button - Call loadSettingsFromPropertiesFile function (javascript).
+	* **"Fetch properties From File" button** - Call loadSettingsFromPropertiesFile function (javascript).
 		This function retrieves all the properties that exist in the properties file and fill the appropriate fields with them.
-	* "Show/Hide Available Fields" button - Call showHideAvailableFields function (javascript).
+	* **"Show/Hide Available Fields" button** - Call showHideAvailableFields function (javascript).
 		This function will show/hide all the fields used in the tests the user defined in the properties file.
 	* There are five optional blocks, one for each property.
 		By clicking on each checkbox a textbox will appear. In this textbox the property content will be entered.
@@ -83,7 +83,7 @@ It contains:
 	This function unmarks all nodes in the tree, and delete all of them from the selectedTests variable.
 - **TestTreeContainer** - This div is initialized empty and will be filled by "loadTreeFromFile" function (javascript).
 	
-- Javascript object named "TestExecuterRPC" that will contain an object that will allow us to call RPC method
+- Javascript object named **TestExecuterRPC** that will contain an object that will allow us to call RPC method
 	in the TestExecurer class. Namely, loadPropertiesFile() RPC function.
 - Call to the "loadTreeFromFile" function (javascript), which opens the file containing the tests and builds the tree.
 
@@ -316,8 +316,10 @@ Helper functions:
 	
 * getTestComperator(fieldsToShow)
 ```
-	@param fieldsToShow The fields that will be shown in the tree.                 
-	@returns {Function} a compare function to use for the getSortedGroups function.
+	@param fieldsToShow                                                   
+		       The fields that will be shown in the tree.                 
+	@returns {Function} a compare function to use for the getSortedGroups 
+		     function.                                                    
 ```
 
 * readPropertiesData(propertiesData)
@@ -456,12 +458,17 @@ Helper functions:
 
 * addOption(container, value, title, isSelected)
 ```
-	Add an option to a select box.                        
-	@param container The select box DOM element.          
-	@param value The value of the option to add.          
-	@param title The title of the option to add.          
-	@param isSelected Is this option should be selected.  
-	@returns {DOM element} The DOM element of the option.   
+	Add an option to a select box.                         
+                                                       
+	@param container                                       
+		       The select box DOM element.                 
+	@param value                                           
+		       The value of the option to add.             
+	@param title                                           
+		       The title of the option to add.             
+	@param isSelected                                      
+		       Is this option should be selected.          
+	@returns {DOM element} The DOM element of the option.  
 ```
 
 * addToTextBoxList(fieldName, showFieldsTextBox)

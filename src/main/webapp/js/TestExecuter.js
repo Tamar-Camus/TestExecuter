@@ -512,8 +512,10 @@ function getShowString(test, properties) {
 }
 
 /**
- * @param fieldsToShow The fields that will be shown in the tree.
- * @returns {Function} a compare function to use for the getSortedGroups function.
+ * @param fieldsToShow
+ *            The fields that will be shown in the tree.
+ * @returns {Function} a compare function to use for the getSortedGroups
+ *          function.
  */
 function getTestComperator(fieldsToShow) {
 	return function compareTest(test1, test2) {
@@ -924,10 +926,15 @@ function setSelectionOptions(selectBox, availableFields, current) {
 
 /**
  * Add an option to a select box.
- * @param container The select box DOM element.
- * @param value The value of the option to add. 
- * @param title The title of the option to add.
- * @param isSelected Is this option should be selected.
+ * 
+ * @param container
+ *            The select box DOM element.
+ * @param value
+ *            The value of the option to add.
+ * @param title
+ *            The title of the option to add.
+ * @param isSelected
+ *            Is this option should be selected.
  * @returns {DOM element} The DOM element of the option.
  */
 function addOption(container, value, title, isSelected) {

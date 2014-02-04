@@ -14,20 +14,19 @@ TestExecuter.java
 Since our plugin is a build parameter our TestExecuter class extends "SimpleParameterDefinition" class.
 
 Members:
-	* uuid - A random number which helps to give a unique id's to the objects used in the jelly files.
-		We need it since we want to be able to add the plugin to the job as many times as we want.
-		That way our objects are unique in each addition and we can defer them from one another.
-		Furthermore, if the plugin are added more then once, the on build you will get more then one tree.
-		That way we can also defer the trees from one another.
-	* propertiesFilePath - In this parameter we will save the properties file path the user entered.
-	
-	The following parameters will indicate the fields which have a special meaning:
+* uuid - A random number which helps to give a unique id's to the objects used in the jelly files.
+	We need it since we want to be able to add the plugin to the job as many times as we want.
+	That way our objects are unique in each addition and we can defer them from one another.
+	Furthermore, if the plugin are added more then once, the on build you will get more then one tree.
+	That way we can also defer the trees from one another.
+* propertiesFilePath - In this parameter we will save the properties file path the user entered.
 
-	* enableField - Name of the field that will imply if the test is enabled or not. 
-	* groupBy - Name of the field in which the plugin will group the tests by. 
-	* showFields - Name of the field(s) that will be shown in the tests tree. 
-	* multiplicityField - Name of the field, in which the plugin will save in the amount of times the test should run. 
-	* fieldSeparator - The character that will separate between the fields in the tests tree. 
+The following parameters will indicate the fields which have a special meaning:
+* enableField - Name of the field that will imply if the test is enabled or not. 
+* groupBy - Name of the field in which the plugin will group the tests by. 
+* showFields - Name of the field(s) that will be shown in the tests tree. 
+* multiplicityField - Name of the field, in which the plugin will save in the amount of times the test should run. 
+* fieldSeparator - The character that will separate between the fields in the tests tree. 
 
 Significant functions:
 	* getAsJson() - Returns a json object which consists of (field/content) pairs.

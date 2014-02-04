@@ -95,7 +95,7 @@ For this we defined the following hidden input fields nested under a span name p
 
 TestExecuter.js
 ==================================================================
-This file includes all the functionality of the both the configuration and the build UI.
+This file includes all the functionality of both the configuration and the build UI.
 
 API functions:
 -

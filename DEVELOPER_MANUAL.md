@@ -15,21 +15,21 @@ Since our plugin is a build parameter our TestExecuter class extends "SimplePara
 
 Members:
 -
-* uuid - A random number which helps to give a unique id's to the objects used in the jelly files.
+* **uuid** - A random number which helps to give a unique id's to the objects used in the jelly files.
 	We need it since we want to be able to add the plugin to the job as many times as we want.
 	That way our objects are unique in each addition and we can defer them from one another.
 	Furthermore, if the plugin are added more then once, the on build you will get more then one tree.
 	That way we can also defer the trees from one another.
-* propertiesFilePath - In this parameter we will save the properties file path the user entered.
-* enableField - Name of the field that will imply if the test is enabled or not. 
-* groupBy - Name of the field in which the plugin will group the tests by. 
-* showFields - Name of the field(s) that will be shown in the tests tree. 
-* multiplicityField - Name of the field, in which the plugin will save in the amount of times the test should run. 
-* fieldSeparator - The character that will separate between the fields in the tests tree. 
+* **propertiesFilePath** - In this parameter we will save the properties file path the user entered.
+* **enableField** - Name of the field that will imply if the test is enabled or not. 
+* **groupBy** - Name of the field in which the plugin will group the tests by. 
+* **showFields** - Name of the field(s) that will be shown in the tests tree. 
+* **multiplicityField** - Name of the field, in which the plugin will save in the amount of times the test should run. 
+* **fieldSeparator** - The character that will separate between the fields in the tests tree. 
 
 Significant functions:
 -
-* getAsJson() - Returns a json object which consists of (field/content) pairs.
+* getAsJson() - Returns a json object which consists of (field/content) pairs.   
 	Only for the following fields: enableField, groupBy, fieldSeparator, showFields, multiplicityField.
 * loadPropertiesFile(String) - Calls similar function in the DescriptorImpl class.
 	Will be explained later.
@@ -53,12 +53,12 @@ It contains:
 -
 - Javascript object named "TestExecuterRPC" that will contain an object that will allow us to call RPC method
 	in the TestExecurer/DescriptorImpl class. Namely, loadPropertiesFile() RPC function.
-- Textbox for the environment variable in which the selected tests will be saved in.
-- Textbox for the properties file path.
-- Textbox for the description (the user can enter a description if he wants).
+- Textbox for the **environment variable** in which the selected tests will be saved in.
+- Textbox for the **properties file path**.
+- Textbox for the **description** (the user can enter a description if he wants).
 
 - Override section:
-	In this section the user can override the properties he defined in the properties file or define them for the first time.
+	In this section the user can override the properties he defined in the properties file or define them for the first time.   
 	This section contains of the following:
 	* "Fetch properties From File" button - Call loadSettingsFromPropertiesFile function (javascript).
 		This function retrieves all the properties that exist in the properties file and fill the appropriate fields with them.
@@ -100,6 +100,7 @@ This file includes all the functionality of the both the configuration and the b
 API functions:
 -
 * loadTreeFromFile(filePath, selectedTestsTextBoxName, testsTreeContainerName, fields)
+```
 	Load all tests from file. Build the tests tree and groups the tests. The          
 	tests tree will be appended to testsTreeContainer. When tests are selected,       
 	they will be written to selectedTestsTextBox. The parameters for building the     
@@ -123,7 +124,8 @@ API functions:
 	@param fields                                                                     
 			   A JSON object containing the fields to override - enableField,         
 			   groupBy, fieldSeparator, showFields, multiplicityField.    
-        
+```
+
 * loadSettingsFromPropertiesFile(propertiesFilePathTextBoxName, enableFieldTextBoxName, groupByTextBoxName, 
 		showFieldsTextBoxName, multiplicityFieldTextBoxName, fieldSeparatorTextBoxName)
 	Sets all override fields with the fields from the properties file. 

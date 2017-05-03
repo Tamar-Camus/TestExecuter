@@ -99,8 +99,20 @@ public class TestExecuter extends SimpleParameterDefinition {
 	// Overridden for better type safety.
 	@Override
 	public DescriptorImpl getDescriptor() {
-		//return (DescriptorImpl) super.getDescriptor();
 		return (DescriptorImpl) Hudson.getInstance().getDescriptor(getClass());
+	}
+	
+	public static class ReadFileResponse {
+		public ReadFileResponse(boolean success, String errorMsg,
+				String content) {
+			super();
+			this.success = success;
+			this.errorMsg = errorMsg;
+			this.content = content;
+		}
+		public boolean success;
+		public String errorMsg;
+		public String content;
 	}
 	
 	@Extension
@@ -112,24 +124,29 @@ public class TestExecuter extends SimpleParameterDefinition {
 			return "Choosing Tests";
 		}
 		
+		
 		@JavaScriptMethod
-		public static String loadPropertiesFile(String filePath) {
+		public static ReadFileResponse loadPropertiesFile(String filePath) {
 			// load a properties file from class path, inside static method
 			if(filePath == null || filePath.isEmpty()) {
-				return null;
+				return new ReadFileResponse(false, "Invalid file name", null);
 			}
 			
 			File file = new File(filePath);
 			
-			if(!file.isFile() || !file.exists()) {
-				return null;
+			if(!file.exists()) {
+				return new ReadFileResponse(false, "File doesn't exist OR Jenkins doesn't have permission for this file", null);
 			}
 			
+			if(!file.isFile()) {
+				return new ReadFileResponse(false, "Not a file", null);
+			}
+						
 			try {
 				FileInputStream inputStream = new FileInputStream(file.getPath());
-				return IOUtils.toString(inputStream, "UTF-8");
+				return new ReadFileResponse(true, null, IOUtils.toString(inputStream, "UTF-8"));
 			} catch (IOException e) {
-				return null;
+				return new ReadFileResponse(false, "Could not access file: "+e.getMessage(), null);
 			}
 		}
 	}
@@ -142,12 +159,11 @@ public class TestExecuter extends SimpleParameterDefinition {
 	@Override
 	public ParameterValue createValue(StaplerRequest req,
 			JSONObject jo) {
-		//String result = getSelectedTestAsString(jo.getString("selectedTests"));
 		return createValue(jo.getString("selectedTests"));
 	}
 	
 	@JavaScriptMethod
-	public String loadPropertiesFile(String filePath) {
+	public ReadFileResponse loadPropertiesFile(String filePath) {
 		return DescriptorImpl.loadPropertiesFile(filePath);
 	}
 }

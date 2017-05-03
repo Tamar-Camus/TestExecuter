@@ -1,6 +1,6 @@
 <j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define"
 	xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
-	<script type="text/javascript" src="${rootURL}/plugin/TestExecuter/js/TestExecuter.js"></script>
+	<script type="text/javascript" src="${rootURL}/plugin/selected-tests-executor/js/TestExecuter.js"></script>
 	<script type="text/javascript">
 		var TestExecuterRPC = <st:bind value="${descriptor}" />;
 	</script>
@@ -16,14 +16,15 @@
 	</f:entry>
 
 	<f:entry title="${%Description}" field="description">
-		<f:textbox value="${instance.getDescription()}" />
+		<f:textbox value="${instance.getDescription()}" 
+		placeholder="Description of the environment variable" />
 	</f:entry>
 
 <f:section title="Override Properties File Settings" />
 
-	<f:entry title="Load Information" help="/plugin/TestExecuter/help-overridePropertiesFileSettings.html">
+	<f:entry title="Load Information" help="/plugin/selected-tests-executor/help-overridePropertiesFileSettings.html">
 		<div>
-		<input type="button" value="Load Properties From File"
+		<input type="button" value="Fetch Properties From File"
 			onclick="loadSettingsFromPropertiesFile('propertiesFilePath_${instance.uuid}', 'enableField_${instance.uuid}', 'groupBy_${instance.uuid}', 'showFields_${instance.uuid}', 'multiplicityField_${instance.uuid}', 'fieldSeparator_${instance.uuid}')" />
 
 		<input type="button" value="Show Available Fields"
@@ -33,7 +34,7 @@
 
 	<f:optionalBlock field="enableField" title="Override Enable Field" checked="${instance.enableField != null}">
 		<f:entry field="text" title="Enable Field" >
-			<table>
+			<table width="100%">
 				<tr>
 					<td width="100%">
 						<f:textbox id="enableField_${instance.uuid}"
@@ -53,7 +54,7 @@
 
 	<f:optionalBlock field="groupBy" title="Override Group By" checked="${instance.groupBy != null}">
 		<f:entry field="text" title="Group By"  >
-			<table>
+			<table width="100%">
 				<tr>
 					<td width="100%">
 						<f:textbox id="groupBy_${instance.uuid}"
@@ -72,7 +73,7 @@
 
 	<f:optionalBlock field="showFields" title="Override Show Fields" checked="${instance.showFields != null}">
 		<f:entry field="text" title="Show Fields" >
-			<table>
+			<table width="100%">
 				<tr>
 					<td width="100%">
 						<f:textbox id="showFields_${instance.uuid}"
@@ -91,7 +92,7 @@
 		title="Override Multiplicity Field" checked="${instance.multiplicityField != null}">
 
 		<f:entry field="text" title="Multiplicity Field" >
-			<table>
+			<table width="100%">
 				<tr>
 					<td width="100%">
 						<f:textbox id="multiplicityField_${instance.uuid}"
@@ -111,7 +112,7 @@
 
 	<f:optionalBlock field="fieldSeparator" title="Override Field Separator" checked="${instance.fieldSeparator != null}">
 		<f:entry field="text" title="Field Separator" >
-			<table>
+			<table width="100%">
 				<tr>
 					<td width="100%">
 						<f:textbox id="fieldSeparator_${instance.uuid}"

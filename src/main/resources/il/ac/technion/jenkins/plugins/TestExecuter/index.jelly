@@ -44,12 +44,17 @@
 		
 		.button-collapse {
 			background-image:
-				url('${rootURL}/plugin/TestExecuter/images/button-collapse.gif');
+				url('${rootURL}/plugin/selected-tests-executor/images/button-collapse.gif');
 		}
 		
 		.button-expand {
 			background-image:
-				url('${rootURL}/plugin/TestExecuter/images/button-expand.gif');
+				url('${rootURL}/plugin/selected-tests-executor/images/button-expand.gif');
+		}
+		
+		.multiplicityInput {
+			width:20px;
+			height:10px;
 		}
 	</style>
 
@@ -68,17 +73,7 @@
 		</span>
 	</f:block>
 	
-<!-- 	"${it.groupBy}", -->
-<!-- 				"${it.showFields}", -->
-<!-- 				"${it.multiplicityField}", -->
-<!-- 				"${it.fieldSeparator != null ? }", -->
-<!-- 				"${it.overrideEnableField}", -->
-<!-- 				"${it.overrideGroupBy}", -->
-<!-- 				"${it.overrideShowFields}", -->
-<!-- 				"${it.overrideMultiplicityField}", -->
-<!-- 				"${it.overrideFieldSeparator}"); -->
-	
-	<script type="text/javascript" src="${rootURL}/plugin/TestExecuter/js/TestExecuter.js"></script>
+	<script type="text/javascript" src="${rootURL}/plugin/selected-tests-executor/js/TestExecuter.js"></script>
 	<script type="text/javascript">
 		var TestExecuterRPC = <st:bind value="${it}"/>;
 		loadTreeFromFile("${it.propertiesFilePath}",
